@@ -9,15 +9,15 @@ export default function HomePage() {
   const router = useRouter();
 
   return (
-    <Container maxW="container.md" py={8}>
-      <Grid templateColumns={{ base: "1fr", md: "250px 1fr" }} gap={6}>
+    <Container py={8}>
+      <Grid templateColumns={{ base: "1fr", md: "300px 1fr" }} gap={6}>
         <Box p={6} borderRadius="lg" borderWidth="1px">
           <Flex align="center" mb={6}>
             <Avatar.Root size="lg" mr={4} shape="rounded" colorPalette="purple">
               <Avatar.Fallback name={user?.username} />
             </Avatar.Root>
             <Box>
-              <Text fontWeight="bold" fontSize="lg">
+              <Text fontWeight="bold" fontSize="md">
                 {user?.username}
               </Text>
               <Text color="gray.500">{user?.jobTitle}</Text>

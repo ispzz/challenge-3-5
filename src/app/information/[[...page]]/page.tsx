@@ -40,7 +40,7 @@ export default function InformationPage() {
 
   if (error) {
     return (
-      <Container maxW="container.lg" py={8}>
+      <Container py={8}>
         <Text color="red.500">Error loading data: {error.message}</Text>
       </Container>
     );
@@ -49,7 +49,7 @@ export default function InformationPage() {
   const { media, pageInfo } = data.Page;
 
   return (
-    <Container maxW="container.lg" py={8}>
+    <Container py={8}>
       <Stack gap={6}>
         <Heading>Anime Collection</Heading>
 
@@ -65,7 +65,7 @@ export default function InformationPage() {
               _hover={{ transform: "translateY(-4px)", shadow: "lg" }}
               onClick={() => setSelectedAnime(anime)}
             >
-              <Image src={anime.coverImage.large} alt={anime.title.romaji} h={{ base: "150px", md: "250px", lg: "300px" }} w="100%" objectFit="cover" />
+              <Image src={anime.coverImage.large} alt={anime.title.romaji} h={{ base: "150px", md: "150", lg: "200px" }} w="100%" objectFit="cover" />
               <Box p={{ base: 2, md: 3, lg: 4 }}>
                 <Text fontWeight="bold" fontSize={{ base: "sm", md: "md", lg: "lg" }}>
                   {anime.title.english || anime.title.romaji}

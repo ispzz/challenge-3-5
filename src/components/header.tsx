@@ -26,7 +26,7 @@ export function Header() {
 
   return (
     <Box as="header" pos="sticky" top={0} zIndex="sticky" bg="bg.subtle" borderBottomWidth="1px" py={4}>
-      <Container maxW="container.lg">
+      <Container>
         {/* Desktop Header */}
         <Stack direction="row" justify="space-between" align="center" display={{ base: "none", md: "flex" }}>
           <Heading size="md">{headingName}</Heading>
