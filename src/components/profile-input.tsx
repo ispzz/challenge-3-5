@@ -16,13 +16,13 @@ export default function ProfileInput({ username, jobTitle, onUsernameChange, onJ
     <Stack gap={4}>
       <Field.Root invalid={!!errors.username}>
         <Field.Label>Username</Field.Label>
-        <Input value={username} onChange={(e) => onUsernameChange(e.target.value)} placeholder="Enter your username" />
+        <Input value={username} onChange={(e) => onUsernameChange(e.target.value)} placeholder="Enter your username" fontSize="md" />
         {errors.username && <Field.ErrorText>{errors.username}</Field.ErrorText>}
       </Field.Root>
 
       <Field.Root invalid={!!errors.jobTitle}>
         <Field.Label>Job Title</Field.Label>
-        <Input value={jobTitle} onChange={(e) => onJobTitleChange(e.target.value)} placeholder="Enter your job title" />
+        <Input value={jobTitle} onChange={(e) => onJobTitleChange(e.target.value)} placeholder="Enter your job title" fontSize="md" />
         {errors.jobTitle && <Field.ErrorText>{errors.jobTitle}</Field.ErrorText>}
       </Field.Root>
     </Stack>

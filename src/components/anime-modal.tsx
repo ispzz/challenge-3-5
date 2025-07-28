@@ -12,17 +12,15 @@ interface AnimeModalProps {
 
 export function AnimeModal({ anime, isOpen, onClose }: AnimeModalProps) {
   return (
-    <Dialog.Root placement="center" open={isOpen} onOpenChange={(details) => !details.open && onClose()} size={{ base: "full", md: "lg" }}>
+    <Dialog.Root placement="center" open={isOpen} onOpenChange={(details) => !details.open && onClose()} size="lg">
       <Dialog.Backdrop />
       <Dialog.Positioner>
         {/* we need specify min height here or the dialog height takes full width on larger screens when setting "base: 'full'" */}
-        <Dialog.Content maxH="100vh" minH={{ base: "100vh", md: "50vh" }} overflow="auto" borderRadius={{ base: "0", md: "lg" }} p={4} pt={{ base: 14, md: 4 }}>
+        <Dialog.Content maxH="100vh" minH={{ base: "100vh", md: "50vh" }} overflow="auto" borderRadius={{ base: "0", md: "lg" }} p={4}>
           <Dialog.CloseTrigger asChild>
-            <Box position="absolute" top={{ base: 16, md: 2 }} right={{ base: 6, md: 2 }} zIndex={1}>
               <IconButton aria-label="Close" variant="solid" size="sm">
                 <LuX />
               </IconButton>
-            </Box>
           </Dialog.CloseTrigger>
 
           {anime.bannerImage && <Image src={anime.bannerImage} alt={anime.title.romaji} h="200px" w="100%" objectFit="cover" borderTopRadius={{ base: "0", md: "lg" }} />}
