@@ -1,37 +1,44 @@
-'use client'
+"use client";
 
-import { useUser } from '@/contexts/user-context'
-import { Container, Heading, Text, Box, Button, Stack } from '@chakra-ui/react'
-import { useRouter } from 'next/navigation'
+import { useUser } from "@/contexts/user-context";
+import { Container, Heading, Text, Box, Button, Stack, Grid, Avatar, Flex } from "@chakra-ui/react";
+import { useRouter } from "next/navigation";
 
 export default function HomePage() {
-  const { user, logout } = useUser()
-  const router = useRouter()
+  const { user } = useUser();
+  const router = useRouter();
 
   return (
     <Container maxW="container.md" py={8}>
-      <Stack gap={6}>
+      <Grid templateColumns={{ base: "1fr", md: "250px 1fr" }} gap={6}>
         <Box p={6} borderRadius="lg" borderWidth="1px">
-          <Heading size="md" mb={4}>Profile Information</Heading>
-          <Text><strong>Username:</strong> {user?.username}</Text>
-          <Text><strong>Job Title:</strong> {user?.jobTitle}</Text>
-          
+          <Flex align="center" mb={6}>
+            <Avatar.Root size="lg" mr={4} shape="rounded" colorPalette="purple">
+              <Avatar.Fallback name={user?.username} />
+            </Avatar.Root>
+            <Box>
+              <Text fontWeight="bold" fontSize="lg">
+                {user?.username}
+              </Text>
+              <Text color="gray.500">{user?.jobTitle}</Text>
+            </Box>
+          </Flex>
+
           <Stack direction="row" mt={4} gap={4}>
-            <Button 
-              colorPalette="blue" 
-              onClick={() => router.push('/profile')}
-            >
-              Edit Profile
-            </Button>
-            <Button 
-              variant="outline" 
-              onClick={logout}
-            >
-              Logout
-            </Button>
+            <Button onClick={() => router.push("/profile")}>Edit Profile</Button>
           </Stack>
         </Box>
-      </Stack>
+
+        <Box p={6} borderRadius="lg" borderWidth="1px">
+          <Heading size="md" mb={4}>
+            Explore Anime
+          </Heading>
+          <Text color="fg.muted" mb={4}>
+            Browse through a collection of popular anime with detailed information and images.
+          </Text>
+          <Button onClick={() => router.push("/information")}>Go to Anime Page</Button>
+        </Box>
+      </Grid>
     </Container>
-  )
+  );
 }
