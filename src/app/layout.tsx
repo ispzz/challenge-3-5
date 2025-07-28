@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Footer } from "@/components/footer";
 import { Providers } from "./providers";
 import { ReactNode } from "react";
+import { Header } from "@/components/header";
 
 export const metadata: Metadata = {
   title: "Leonardo AI Challenge"
@@ -16,7 +17,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html lang="en" suppressHydrationWarning>
       <body>
         <Providers>
-          <main style={{ minHeight: "calc(100vh - 60px)" }}>{children}</main>
+          <Header />
+          <main>{children}</main>
           <Footer />
         </Providers>
       </body>

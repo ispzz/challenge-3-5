@@ -1,11 +1,8 @@
 "use client";
 
 import React, { createContext, useContext, useEffect, useState } from "react";
-
-export interface UserInfo {
-  username: string;
-  jobTitle: string;
-}
+import { useRouter } from "next/navigation";
+import { UserInfo } from "@/types/user";
 
 interface UserContextType {
   user: UserInfo | null;
@@ -22,6 +19,7 @@ const STORAGE_KEY = "user-info";
 export function UserProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<UserInfo | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const router = useRouter();
 
   // Load user data
   useEffect(() => {
@@ -52,8 +50,8 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
   const logout = () => {
     localStorage.removeItem(STORAGE_KEY);
     setUser(null);
-    // Force reload to ensure clean state
-    window.location.href = "/login";
+    // Navigate to login page
+    router.push("/login");
   };
 
   return <UserContext.Provider value={{ user, isLoading, login, updateUser, logout }}>{children}</UserContext.Provider>;

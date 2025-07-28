@@ -1,44 +1,42 @@
-'use client'
+"use client";
 
-import { ReactNode, useEffect } from 'react'
-import { usePathname, useRouter } from 'next/navigation'
-import { Center, Spinner } from '@chakra-ui/react'
-import { useUser } from '@/contexts/user-context'
+import { ReactNode, useEffect } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { Center, Spinner } from "@chakra-ui/react";
+import { useUser } from "@/contexts/user-context";
 
 interface AuthWrapperProps {
-  children: ReactNode
+  children: ReactNode;
 }
 
 export function AuthWrapper({ children }: AuthWrapperProps) {
-  const { user, isLoading } = useUser()
-  const pathname = usePathname()
-  const router = useRouter()
+  const { user, isLoading } = useUser();
+  const pathname = usePathname();
+  const router = useRouter();
 
-  const isPublicRoute = pathname === '/login'
+  const isLoginRoute = pathname === "/login";
 
   useEffect(() => {
     if (!isLoading) {
-      if (!user && !isPublicRoute) {
-        router.replace('/login')
-      } else if (user && isPublicRoute) {
-        router.replace('/')
+      if (!user && !isLoginRoute) {
+        router.replace("/login");
+      } else if (user && isLoginRoute) {
+        router.replace("/");
       }
     }
-  }, [user, isLoading, isPublicRoute, router])
+  }, [user, isLoading, isLoginRoute, router]);
 
-  // Show loading state
   if (isLoading) {
     return (
       <Center h="100vh">
         <Spinner size="xl" />
       </Center>
-    )
+    );
   }
 
-  // Don't render protected content if not authenticated
-  if (!user && !isPublicRoute) {
-    return null
+  if (!user && !isLoginRoute) {
+    return null;
   }
 
-  return <>{children}</>
+  return <>{children}</>;
 }

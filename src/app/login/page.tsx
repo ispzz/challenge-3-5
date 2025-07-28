@@ -5,13 +5,14 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useUser } from "@/contexts/user-context";
 import ProfileInput from "@/components/profile-input";
-import { UserFormErrors, handleUserFormSubmit } from "@/utils/user-form-helpers";
+import { handleUserFormSubmit } from "@/utils/user-form-helpers";
+import { UserFormErrors } from "@/types/user";
 
 export default function LoginPage() {
   const { login } = useUser();
   const router = useRouter();
-  const [username, setUsername] = useState("");
-  const [jobTitle, setJobTitle] = useState("");
+  const [username, setUsername] = useState<string>("");
+  const [jobTitle, setJobTitle] = useState<string>("");
   const [errors, setErrors] = useState<UserFormErrors>({ username: "", jobTitle: "" });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -32,7 +33,7 @@ export default function LoginPage() {
           <Stack gap={4}>
             <ProfileInput username={username} jobTitle={jobTitle} onUsernameChange={setUsername} onJobTitleChange={setJobTitle} errors={errors} />
 
-            <Button type="submit" colorPalette="blue" w="full" mt={4}>
+            <Button type="submit" w="full" mt={4}>
               Continue
             </Button>
           </Stack>

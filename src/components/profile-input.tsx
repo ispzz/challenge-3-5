@@ -1,5 +1,6 @@
 "use client";
 
+import { UserFormErrors } from "@/types/user";
 import { Field, Input, Stack } from "@chakra-ui/react";
 
 interface ProfileInputProps {
@@ -7,10 +8,7 @@ interface ProfileInputProps {
   jobTitle: string;
   onUsernameChange: (value: string) => void;
   onJobTitleChange: (value: string) => void;
-  errors: {
-    username?: string;
-    jobTitle?: string;
-  };
+  errors: UserFormErrors;
 }
 
 export default function ProfileInput({ username, jobTitle, onUsernameChange, onJobTitleChange, errors }: ProfileInputProps) {

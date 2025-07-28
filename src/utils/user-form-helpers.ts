@@ -1,12 +1,4 @@
-export interface UserFormData {
-  username: string;
-  jobTitle: string;
-}
-
-export interface UserFormErrors {
-  username: string;
-  jobTitle: string;
-}
+import { UserInfo, UserFormErrors } from "@/types/user";
 
 export const validateUserForm = (username: string, jobTitle: string) => {
   const newErrors = { username: "", jobTitle: "" };
@@ -29,7 +21,7 @@ export const handleUserFormSubmit = (
   e: React.FormEvent,
   username: string,
   jobTitle: string,
-  updateUser: (data: UserFormData) => void,
+  updateUser: (data: UserInfo) => void,
   router: { push: (path: string) => void },
   setErrors: (errors: UserFormErrors) => void
 ) => {
